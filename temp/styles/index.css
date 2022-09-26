@@ -24,15 +24,15 @@ main {
     background-color: #d4e8d0;
     height: 90vh;
     /* 스크롤 되는 앱의 경우 main높이는 디폴트로 놔둬야함 */
-    padding: 3%;
-    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 main > section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 button {

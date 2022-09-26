@@ -4,7 +4,7 @@
 
 /* 레이아웃 */
 * {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
 }
 
@@ -24,21 +24,21 @@ main {
     background-color: #d4e8d0;
     height: 90vh;
     /* 스크롤 되는 앱의 경우 main높이는 디폴트로 놔둬야함 */
-    padding: 3%;
-    align-items: stretch;
-}
-
-main > section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+main > section {
+    display: flex;
+    flex-direction: column;
+}
+
 button {
     font-family: 'Stylish', sans-serif;
     display: inline-block;
-    margin: 2% auto;
+    margin: auto;
     width: 50vw;
     max-width: 300px;
     height: 20vw;
