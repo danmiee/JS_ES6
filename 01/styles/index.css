@@ -9,7 +9,6 @@
 }
 
 header {
-    font-family: 'Gugi', cursive;
     background-color: #003911;
     height: 10vh;
     color: #ffffff;
@@ -36,7 +35,6 @@ main > section {
 }
 
 button {
-    font-family: 'Stylish', sans-serif;
     display: inline-block;
     margin: auto;
     width: 50vw;
