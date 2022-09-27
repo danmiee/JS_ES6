@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   // console.log(document.getElementById("bt").innerHTML);
 
 /* 요소생성(Create) */
+  // const bt = document.createElement("")
   // let bt = document.createElement("button")
-  // const = document.createElement("")
   // document.getElementById("bt").append(bt);
 
 /* 요소찾기(Retrieve)*/
