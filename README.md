@@ -21,3 +21,15 @@
 + 위치 고정
   + top, bottom으로 위치설정
   + position: sticky로 고정
+
+<hr/>
+
+## 220927
+### JS 문법
++ 변수/상수 선언
++ 호이스팅
++ DOM이 랜더링 된 후 제어
++ DOM CRUD
++ 반복문(for)
+
+<hr/>
