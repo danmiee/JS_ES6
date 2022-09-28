@@ -32,6 +32,30 @@ main {
 main > section {
     display: flex;
     flex-direction: column;
+    margin: 2vh;
+}
+
+/* #msg {
+    display: none;
+} */
+
+.msgDiv {
+    display: inline-block;
+    margin: 1vh;
+}
+
+#choice {
+    display: inline-block;
+}
+
+
+
+[type="radio"] {
+    vertical-align: middle;
+    border: max(2px, 0.1em) grey;
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
 }
 
 button {
@@ -39,29 +63,33 @@ button {
     margin: 3% auto;
     width: 50vw;
     max-width: 300px;
-    height: 20vw;
+    height: 20vh;
     max-height: 100px;
     border: none;
     border-radius: 35px;
     font-size: 1.5rem;
 }
 
-.bt1 {
+#bt1 {
     background-color: #a8d473;
 }
 
-.bt2 {
+#bt2 {
     background-color: #c3f18c;
 }
 
-button:hover, button:active {
+#bt1:hover, #bt1:active {
     background-color: #0f2000;
     color: #c3f18c;
 }
+
+#bt2:hover, #bt2:active {
+    background-color: #0f2000;
+    color: #c3f18c;
 
 @media only screen and (max-width:200px) and (max-height:50px) {
     button {
         flex-direction: column;
         height: auto;
     }
-}
+}}
