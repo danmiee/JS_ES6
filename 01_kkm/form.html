@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>JS PWA</title>
+  <script>
+    const show = (n) => {
+      console.log(n) ;
+
+      console.log(`text1 : ${document.getElementById("txt1").value}`) ;
+      console.log(`text1 : ${form1.txt1.value}`) ;
+
+      console.log(`select : ${document.getElementById("sel1").value}`) ;
+      console.log(`select : ${form1.sel1.value}`) ;
+
+      /* radio 버튼 */
+      console.log(`radio : ${document.querySelector("input[type=radio]").value}`) ;
+
+      radios = document.querySelectorAll("input[type=radio]") ;
+      for (let item of radios) {
+        if (item.checked) {
+          console.log(`radio2 : ${item.value}`) ;
+          break;
+        }
+      }
+
+      const rt = form1.num.value ;
+      console.log(`radio3 : ${rt}`) ;
+
+    }
+  </script> 
+
+</head>
+<body>
+  <div id="root">
+    <header>
+      <h1>자바스크립트 연습</h1>
+    </header>
+    <main id="content">
+      <section id="inNum">
+        <form name="form1" id="form1" action="a.html">
+        <input type="txet" name="txt1" id="txt1">
+        <select id="sel1" name="sel1">
+          <option value="1">사과</option>
+          <option value="2" selected>바나나</option>
+          <option value="3">딸기</option>
+        </select>
+        <fieldset>
+          <legend>번호선택</legend>
+          <input type="radio" name="num" value="1" id="r1"><label for="r1"> 1 </label>
+          <input type="radio" name="num" value="2" id="r2"><label for="r2"> 2 </label>
+          <input type="radio" name="num" value="3" id="r3"><label for="r3"> 3 </label>
+          <input type="radio" name="num" value="4" id="r4"><label for="r4"> 4 </label>
+          <input type="radio" name="num" value="5" id="r5"><label for="r5"> 5 </label>
+          <input type="radio" name="num" value="6" id="r6"><label for="r6"> 6 </label>
+        </fieldset>
+        <input type="button" onclick="show(1);" value="확인1">
+        <input type="button" onclick="show(2);" value="확인2">
+        <input type="submit" value="전송">
+        </form>
+      </section>
+    </main>
+  </div> 
+</body>
+</html>
