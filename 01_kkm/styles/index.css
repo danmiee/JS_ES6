@@ -2,17 +2,22 @@
   margin: 0px;
   padding: 0px;
 }
+
+
 #root {
+  /* root 자식요소(header, main)를 세로 일렬로 정렬 */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 header {
   width : 100%;
-  height: 10vh;
+  height: 10vh; /* 화면 높이의 10% */
   background-color: black;
   color : white;
+  /* header 자식요소를 세로 일렬로 정렬 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +25,9 @@ header {
 
 main {
   width : 100%;
-  height: 90vh;
+  height: 90vh; /* 화면 높이의 90% */
   color : #626567;
+  /* main 자식요소를 세로 일렬로 정렬 */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,19 +53,14 @@ button {
   cursor: pointer;
 }
 
-button:active {
+button:hover, button:active {
   background-color: blue;
 }
 
 /*radio*/
-/* Labels for checked inputs */
-input:checked + label {
-  color: red;
-}
-
 /* Radio element, when checked */
 input[type="radio"] {
-  display: none;
+  display: none;  /* 라디오버튼 동그라미 숨기기 */
 }
 input[type="radio"] + label {
   display: inline-block;
@@ -75,6 +76,7 @@ input[type="radio"]:checked + label {
   color: #ffffff;
 }
 
+/* 번호들을 묶은 그룹 */
 fieldset {
   width: 60vw;
   height: 12vw;

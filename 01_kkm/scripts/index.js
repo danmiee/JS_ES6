@@ -1,98 +1,76 @@
-// 기존 함수 선언 방식  
-/*
-function funPrint(n) {
-  console.log(n);
-  console.log("외부 자바스크립트") ; 
-  console.log("버튼"+1);
-}
-*/
+// 랜덤수
+let randNum;
+// 사용자가 선택한 수
+let userNum;
 
-//ES6+ : 화살표 함수
-const funPrint = (n) => {
-  //console.log(n);
-  //console.log("외부 자바스크립트") ;
-  console.log(`버튼${n}`);
+// 화면 보기 함수
+const dispDom = (msgP,inNumP,bt1P,bt2P) => {
+  document.getElementById('msg').style.display=msgP;
+  document.getElementById('inNum').style.display=inNumP;
+  document.getElementById('bt1').style.display=bt1P;
+  document.getElementById('bt2').style.display=bt2P;
 }
 
-/*
-//변수 
-//console.log(x);
-let x = 100;
-x = 100 *2 ;
-console.log(x);
-*/
+// 주사위
+// function showDice() {}
+const showDice = () => {
 
-/* jQuery 
-$document.ready() {
+  // 랜덤 수 생성
+  randNum=Math.floor(Math.random()*6) + 1;
+  console.log(`주사위 랜덤수 = ${randNum}`)
 
+  // DOM 제어
+  dispDom('none','block','none','block');
+  // document.getElementById('msg').style.display='none';
+  // document.getElementById('inNum').style.display='block';
+  // document.getElementById('bt1').style.display='none';
+  // document.getElementById('bt2').style.display='block';
 }
-*/
 
-//DOM이 생성이 되고 난 후에 요소를 CRUD해야한다.
-//document.addEventListener("DOMContentLoaded",콜백함수);
-//document.addEventListener("DOMContentLoaded",function () {});
-//document.addEventListener("DOMContentLoaded",() => {});
-document.addEventListener("DOMContentLoaded", () => {
+// 확인
+const showOk = () => {
 
-  //console.log(document.getElementById("bt").innerHTML);
+  // 사용자가 선택한 수 가져오기
+  userNum = form1.num.value;
 
-  /*요소 생성*/
-  //let bt = document.createElement("button")
-  //document.getElementById("bt").append(bt);
+  // 랜덤수와 사용자가 선택한 수 비교하기
+  console.log(`사용자 선택수 = ${userNum}`);
 
-  //요소 찾기
-  /*
-  //결과 HTMLCollection
-  const bts1 = document.getElementsByClassName("bt1");
-  console.log(bts1);
+  // DOM 제어
+  dispDom('block','none','block','none');
+  // document.getElementById('msg').style.display='block';
+  // document.getElementById('inNum').style.display='none';
+  // document.getElementById('bt1').style.display='block';
+  // document.getElementById('bt2').style.display='none';
 
-  //결과 HTMLCollection
-  const bts2 = document.getElementsByTagName("button");
-  console.log(bts2);
-
-  //결과 Node
-  const bts3 = document.querySelector(".bt1");
-  console.log(bts3);
-  */
-  //결과 NodeList
-  const bts4 = document.querySelectorAll(".bt1");
-  //console.log(bts4.length);
- 
-  // console.log(bts4[0].innerHTML);
-  // console.log(bts4[0].innerText);
-  // console.log(bts4[1].textContent);
- 
-  /* 반복문 for*/
-  //결과 NodeList를 반복으로 가져오기
-  // for(let i=0; i < bts4.length ; i++) {
-  //   console.log(bts4[i]);
-  //   //bts4[i].innerHTML = `mybutton${i+1}`
-  //   //console.log(bts4[i].innerHTML);
-  // } 
-
-  /* 반복문 for in => 키만 가지고 옴*/
-  // for(let i in bts4) {
-  //   console.log(i)
+  // 주사위 그림
+  let tag = `<img src="./images/${randNum}.png">`;
+  
+  // ox 그림
+  let ox;
+  if (randNum == userNum) ox = "o";
+  else                    ox = "x";
+  // if (randNum==userNum) {
+  //   tag = `$(tag)<img src="./images/o.png>`
+  // } else {
+  //   tag = `$(tag)<img src="./images/x.png>`
   // }
 
-  /* 반복문 foeach : 메소드형식 중간에 종료할 수 없음*/
-  // bts4.forEach((item)=>{
-  //   console.log(item.innerHTML);
-  // });
+  tag = `${tag}<img src="./images/${ox}.png">`;
 
-  // bts4.forEach((item, idx)=>{
-  //   console.log(`${idx} : ${item.innerHTML}`);
-  // });
-  
-  /*반복문 for .. of*/
-  for(let item of bts4) {
-    console.log(item.innerHTML);
-  }
+  // 이미지 표시
+  document.getElementById("msg").innerHTML = tag;
+  console.log(`사용자 선택 수 확인 => ${userNum}`);
+}
 
-  for(let [idx, item] of bts4.entries()) {
-    console.log(`${idx} : ${item.innerHTML}`);
-    break;
-  }
 
-}); 
+//DOM이 생성이 되고 난 후에 요소를 CRUD해야한다.
+document.addEventListener("DOMContentLoaded", () => {
 
+  //주사위 버튼만 보여야 함
+  dispDom('none','none','block','none');
+  // document.getElementById('msg').style.display='none';
+  // document.getElementById('inNum').style.display='none';
+  // document.getElementById('bt2').style.display='none';
+
+});
