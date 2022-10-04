@@ -79,3 +79,7 @@ button:hover, button:active {
   background-color:#cde5ff;
   color: #006399;
 }
+
+h2 {
+  color: red;
+}

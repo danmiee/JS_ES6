@@ -19,65 +19,83 @@ const boxShuffle = () => {
       num[idx1] = num[idx2];
       num[idx2] = temp;
     }
-    dispDom('flex', 'flex', 'none');
   }
-  console.log('shuffle num: [' + num + ']');
+  shuffleFlag = true;
+  init();
+  console.log(num);
 };
-
-// 박스 중복클릭 방지
-
-//박스를 선택한 순서를 기록하는 배열
-let selNum = [];
-let click = document.getElementsByClassName('boardbox').click;
-
-for(let sn=0; sn<num.length; sn++) {
-  selNum[sn] = click;
-}
-
-//박스를 선택한 개수를 기록하는 변수
-let cnt = 0;
 
 //폭탄이 섞였는지 체크하는 flag변수
 let shuffleFlag = false;
 
+//박스를 선택한 순서를 기록하는 배열
+let selNum = [];
+
+// 메세지 출력 함수
+const msgShow = (m) => {
+  const msg = document.getElementById('msg');
+  msg.innerHTML = `<h2>${m}</h2>`;
+}
 /* 박스 누르면(show) 
-  1. 폭탄섞기 여부확인
-  2. 안 섞었으면 섞으라고 하기
-  // 이하 내용은 섞었을 때
-  3. cnt 기록하기
-  4. selNum 요소 기록하기
-  5. 이미지 보여주기(0:하트/1:폭탄)
-    단, 성공(cnt=8) 시 1도 하트
- */
+1. 셔플여부 확인
+  - 안 섞었으면 섞으라고 하기
+<섞었을 때>
+2. selNum 요소 기록하기
+  - selNum.length로 cnt 체크
+3. 이미지 보여주기(0:하트/1:폭탄)
+단, 성공(cnt=8) 시 1도 하트
+*/
 
 const show = (click) => {
-  let heart = `<img src="./images/heart.png" id="heartImg">`;
-  let bomb = `<img src="./images/bomb.png" id="bombImg">`;
-
-  if (shuffleFlag) {
+  
+  // 셔플여부 확인
+  if (!shuffleFlag) {
+    msgShow('Shuffle please');
     return;
-  } else {
-    if (num[click - 1] == 1) {
-      if (cnt == 8) {
-        cnt++;
-        document.getElementById(`box${click}`).innerHTML = heart;
-      } else {
-        cnt++;
-        document.getElementById(`box${click}`).innerHTML = bomb;
-      }
-    } else {
-      cnt++;
-      document.getElementById(`box${click}`).innerHTML = heart;
-    }
-    console.log('cnt: ' + cnt);
   }
+
+  // selNum 취합 및 length 확인
+  if (!selNum.includes(click)) selNum.push(click);
+  console.log(selNum, selNum.length);
+  
+  // 클릭 박스에 따라 그림표시
+  let imgSrc = null;
+  if(num[click-1]==0) {
+    imgSrc = 'heart';
+  } else {
+    imgSrc = 'bomb';
+    shuffleFlag = false;
+    msgShow('FAIL😢');
+  }
+
+  document.getElementById(`box${click}`).innerHTML = `<img src="./images/${imgSrc}.png">`;
+  
+  // 성공체크
+  if (selNum.length == 8) {
+    let fn = [1,2,3,4,5,6,7,8,9].filter((i) => !selNum.includes(i));
+    console.log(fn[0]);
+    document.getElementById(`box${fn[0]}`).innerHTML = `<img src="./images/heart.png">`;
+    shuffleFlag = false;
+    msgShow('SUCCESS😍');
+  }
+
+}
+
+// 초기화 함수
+const init = () => {
+  msgShow(" ");
+
+  for (let i = 1; i <= 9; i++) {
+    document.getElementById(`box${i}`).innerHTML = `${i}`;
+  }
+
+  selNum = [];
 }
 
 /* DOM이 로드된 후에 클릭이벤트 연결*/
 document.addEventListener("DOMContentLoaded", () => {
 
   // 기본세팅
-  dispDom('flex', 'flex', 'flex');
   boxShuffle();
   shuffleFlag = false;
   cnt = 0;
