@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Vanilla Challenge</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="src/style.css" />
-  </head>
 
-  <body>
-    <script src="src/index.js"></script>
-  </body>
+<head>
+  <title>Vanilla Challenge</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+
+<body>
+  <div id="wrap">
+    <!-- 실시간 시계 -->
+    <h1 id="clock"></h1>
+    
+    <!-- 이름으로 로그인 -->
+    <form id="login-form" class="hidden">
+      <input type="text" placeholder="What is your name?" />
+      <input type="submit" value="Login" id="login-bt" />
+    </form>
+    <h2 id="greeting" class="hidden"></h2>
+    
+    <!-- 투두리스트 -->
+    <div id="todo-div" class="hidden">
+      <ul id="todo-ul"><h2>TO DO LIST</h2></ul>
+    </div>
+    
+    <!-- 위치에 맞는 날씨 -->
+    <div id="location">
+      <span id="city"></span>
+      <span id="weather"></span>
+    </div>
+  </div>
+  <script src="./src/index.js"></script>
+</body>
+
 </html>
